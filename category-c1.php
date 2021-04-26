@@ -56,20 +56,10 @@ $disableauthorcard = get_theme_mod( 'disable_authorbox_sectionarticles_card');
 
     <!-- right sidebar (popular posts and widgets if any) -->
     <div class="col-md-4 thesidebar">
-
-      <!-- WorkSheet new section -->
-      <?php if (function_exists('worksheet_count_cat_post')) : ?>
-      <h4><?php echo worksheet_count_cat_post('vocabulary'); ?> vocabulary topics</h4><hr><br>
-      <?php endif; ?>
-
-      <h5>Search Vocabulary topics</h5>
-      <?php echo do_shortcode ('[searchandfilter id="2303"]'); ?> <br>
-      <!-- end WorkSheet new section -->
-
         <!-- widgets -->
-                <?php if ( is_active_sidebar( 'vocabulary-books4languages-widget-area' ) ) : ?>
+                <?php if ( is_active_sidebar( 'c1-books4languages-widget-area' ) ) : ?>
                     <div id="sidebar-home" class="sidebar-home widget-area" role="complementary">
-                        <?php dynamic_sidebar( 'vocabulary-books4languages-widget-area' ); ?>
+                        <?php dynamic_sidebar( 'c1-books4languages-widget-area' ); ?>
                     </div>
                 <?php endif; ?>
             <!-- end widgets -->
@@ -77,7 +67,7 @@ $disableauthorcard = get_theme_mod( 'disable_authorbox_sectionarticles_card');
         if( class_exists( 'WPClapsApplause' ) ) {
         $disabledatecard = get_theme_mod( 'disable_date_sectionarticles_card');
         $category = get_queried_object();
-        // $cat_id = $category->term_id; //WorkSheet NOT LONGER REQUIRED because $cat_id in next section is static ?>
+        $cat_id = $category->term_id; ?>
 
         <div class="sticky-top sticky-sidebar-offset mundana_claps_popular_category">
         <h4 class="font-weight-bold spanborder"><span class="border-0"><?php _e( 'Popular in', 'mundana' ); ?> <div class="text-capitalize d-inline">"<?php the_archive_title() ?>"</div> </span></h4>
@@ -86,7 +76,7 @@ $disableauthorcard = get_theme_mod( 'disable_authorbox_sectionarticles_card');
             <?php $args = array(
                         'post_type' => 'post',
                         'post_status'    => 'publish',
-                        'cat' => 56, // WorkSheet $cat_id
+                        'cat' => $cat_id,
                         'numberposts' => 5,
                         'meta_key' => '_pt_claps',
                         'orderby' => 'meta_value_num',

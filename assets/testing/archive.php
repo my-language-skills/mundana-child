@@ -49,8 +49,6 @@ get_header(); ?>
 
   <!-- right sidebar (popular posts and widgets if any) -->
   <div class="col-md-4">
-    <h5>Search more topics</h5>
-    <?php echo do_shortcode ( '[searchandfilter id="2311"]' ); ?> <br>
 
     <!-- widgets -->
     <?php if ( is_active_sidebar( 'sidebar-home' ) ) : ?>

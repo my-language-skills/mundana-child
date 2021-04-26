@@ -49,15 +49,23 @@ get_header(); ?>
 
   <!-- right sidebar (popular posts and widgets if any) -->
   <div class="col-md-4">
-    <h5>Search more topics</h5>
-    <?php echo do_shortcode ( '[searchandfilter id="2311"]' ); ?> <br>
+
+    <!-- WorkSheet new section -->
+    <?php if (function_exists('worksheet_count_cat_post')) : ?>
+    <h4><?php echo worksheet_count_cat_post('orthography'); ?> orthography topics</h4><hr><br>
+    <?php endif; ?>
+
+    <h5>Search Grammar topics</h5>
+    <?php if ( in_category( 'orthography' ) )  : echo do_shortcode ( '[searchandfilter id="2302"]' ); endif; ?> <br>
+    <!-- end WorkSheet new section -->
 
     <!-- widgets -->
-    <?php if ( is_active_sidebar( 'sidebar-home' ) ) : ?>
+    <?php if ( is_active_sidebar( 'orthography-books4languages-widget-area' ) ) : //WorkSheet widget area ?>
     <div id="sidebar-home" class="sidebar-home widget-area" role="complementary">
-      <?php dynamic_sidebar( 'sidebar-home' ); ?>
+      <?php dynamic_sidebar( 'orthography-books4languages-widget-area' ); //WorkSheet widget area ?>
     </div>
     <?php endif; ?>
+
     <!-- end widgets -->
 
     <?php echo mundana_claps(); ?>
